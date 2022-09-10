@@ -44,6 +44,7 @@ const SignIn = () => {
             className="border-2 text-2xl p-2 rounded"
             placeholder="Email"
             {...register('email')}
+            data-testid="input-email"
           />
           <div className="w-80">{errors && <p>{errors.email?.message}</p>}</div>
         </div>

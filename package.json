@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.7",
