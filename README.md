@@ -6,6 +6,12 @@
 npm run dev
 ```
 
+## Test
+
+```
+npm run test
+```
+
 ## Install Memo
 
 ### Vite
