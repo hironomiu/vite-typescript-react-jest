@@ -61,6 +61,7 @@ const SignIn = () => {
         <input
           type="submit"
           className="mt-2 text-2xl bg-blue-500 p-2 rounded disabled:bg-gray-300 w-36 disabled:cursor-default cursor-pointer"
+          value="SignIn"
           disabled={!isValid}
         />
       </form>
