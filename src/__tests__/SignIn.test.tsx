@@ -43,5 +43,14 @@ describe('SignIn', () => {
 
     // Password
     expect(screen.getByTestId('input-password')).toHaveValue('')
+    await userEvent.type(screen.getByTestId('input-password'), 'password')
+    expect(await screen.findByTestId('input-password')).toHaveValue('password')
+
+    // SignIn
+
+    await userEvent.click(screen.getByTestId('input-submit'))
+    // TODO: 画面遷移するかどうか調べる（今時点だとしていない）
+    expect(await screen.findByTestId('input-submit')).toBeInTheDocument()
+    screen.debug()
   })
 })
