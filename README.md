@@ -1,5 +1,11 @@
 # vite-typescript-react-jest
 
+vite + TypeScript + React
+
+react-router-dom + Recoil + react-hook-form + zod
+
+Jest + testing-library
+
 ## Run
 
 ```

@@ -1,10 +1,13 @@
-import { user } from '../zod'
+import { user } from '../../zod'
 
-describe('user', () => {
-  it('test', () => {
+describe('zod user schema', () => {
+  it('正常系', () => {
     expect(
       user.parse({ email: 'hanako@example.com', password: 'password' })
     ).toEqual({ email: 'hanako@example.com', password: 'password' })
+  })
+
+  it('異常系', () => {
     expect(() => user.parse({ email: 'a', password: 'a' })).toThrow(`[
   {
     \"validation\": \"email\",
