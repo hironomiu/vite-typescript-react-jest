@@ -1,17 +1,10 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { isSignInAtom } from '../recoil/global'
-
-const user = z.object({
-  email: z.string().email({ message: 'Emailを入力してください。' }),
-  password: z.string().min(8, { message: '8文字以上です' }),
-})
-
-type User = z.infer<typeof user>
+import { user, User } from '../zod'
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -46,7 +39,11 @@ const SignIn = () => {
             {...register('email')}
             data-testid="input-email"
           />
-          <div className="w-80">{errors && <p>{errors.email?.message}</p>}</div>
+          <div className="w-80">
+            {errors && (
+              <p data-testid="p-error-email">{errors.email?.message}</p>
+            )}
+          </div>
         </div>
         <div className="pt-2 flex items-center">
           <input
@@ -54,9 +51,12 @@ const SignIn = () => {
             className="border-2 text-2xl p-2 rounded"
             placeholder="Password"
             {...register('password')}
+            data-testid="input-password"
           />
           <div className="w-80">
-            {errors && <p>{errors.password?.message}</p>}
+            {errors && (
+              <p data-testid="p-error-password">{errors.password?.message}</p>
+            )}
           </div>
         </div>
         <input

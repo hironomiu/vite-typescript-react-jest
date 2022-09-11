@@ -15,11 +15,19 @@ describe('SignIn', () => {
       </BrowserRouter>
     )
     expect(screen.getByText('SignIn')).toBeInTheDocument()
+
+    // Email
     expect(screen.getByTestId('input-email')).toHaveValue('')
+    expect(screen.getByTestId('p-error-email').textContent).toBe('')
     await userEvent.type(screen.getByTestId('input-email'), 'hoge')
     expect(
       await screen.findByText('Emailを入力してください。')
     ).toBeInTheDocument()
+    expect(screen.getByTestId('p-error-email').textContent).toBe(
+      'Emailを入力してください。'
+    )
+
+    expect(screen.getByTestId('p-error-email')).toBeInTheDocument()
     expect(await screen.findByTestId('input-email')).toHaveValue('hoge')
     await userEvent.type(
       screen.getByTestId('input-email'),
@@ -32,5 +40,8 @@ describe('SignIn', () => {
     expect(await screen.findByTestId('input-email')).toHaveValue(
       'hanako@example.com'
     )
+
+    // Password
+    expect(screen.getByTestId('input-password')).toHaveValue('')
   })
 })
