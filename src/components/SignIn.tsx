@@ -2,9 +2,24 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { isSignInAtom } from '../recoil/global'
 import { user, User } from '../zod'
+
+const fetchSignInPost = async (user: User) => {
+  const response = await fetch('http://127.0.0.1:4141/api/v1/auth/signin', {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'include',
+    redirect: 'follow',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ ...user }),
+  })
+  return await response.json()
+}
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -27,7 +42,9 @@ const SignIn = () => {
       <form
         action=""
         className="px-4"
-        onSubmit={handleSubmit(async () => {
+        onSubmit={handleSubmit(async (user: User) => {
+          const ret = await fetchSignInPost(user)
+          console.log(ret)
           setIsSignIn(true)
         })}
       >

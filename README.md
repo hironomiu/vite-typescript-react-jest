@@ -131,3 +131,17 @@ module.exports = {
   presets: ['@babel/preset-env', '@babel/preset-react'],
 }
 ```
+
+#### fetch
+
+install 後テストコードに`import 'cross-fetch/polyfill'`で import する
+
+```
+npm install --save cross-fetch
+```
+
+#### MSW
+
+```
+npm install --save-dev msw
+```
