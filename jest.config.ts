@@ -9,11 +9,14 @@ export default {
 
   // Stop running tests after `n` failures
   // bail: 0,
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.jest.json',
-    },
-  },
+
+  // TODO: `Define `ts-jest` config under `globals` is deprecated.`で怒られるので一旦コメント
+  // globals: {
+  //   'ts-jest': {
+  //     tsconfig: 'tsconfig.jest.json',
+  //   },
+  // },
+
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
