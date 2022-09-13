@@ -29,6 +29,7 @@ describe('SignIn', () => {
       </QueryClientProvider>
     )
     expect(screen.getByText('SignIn')).toBeInTheDocument()
+    expect(screen.getByTestId('input-submit')).toBeDisabled()
 
     // Email
     expect(screen.getByTestId('input-email')).toHaveValue('')
@@ -57,16 +58,13 @@ describe('SignIn', () => {
 
     // Password
     expect(screen.getByTestId('input-password')).toHaveValue('')
-    await userEvent.type(screen.getByTestId('input-password'), 'password')
+    await userEvent.type(
+      screen.getByTestId('input-password'),
+      'password{enter}'
+    )
     expect(await screen.findByTestId('input-password')).toHaveValue('password')
 
-    // SignIn
-
-    // TODO: Cannot log after tests are done. Did you forget to wait for something async in your test?
-    // await userEvent.click(screen.getByTestId('input-submit'))
-
-    // TODO: 画面遷移するかどうか調べる（今時点だとしていない）
-    // expect(await screen.findByTestId('input-submit')).toBeInTheDocument()
-    // screen.debug()
+    // SignIn(submit)
+    expect(screen.getByTestId('input-submit')).toBeEnabled()
   })
 })
