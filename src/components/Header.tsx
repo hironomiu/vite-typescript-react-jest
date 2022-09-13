@@ -1,4 +1,3 @@
-import React from 'react'
 import { useRecoilState } from 'recoil'
 import { isSignInAtom } from '../recoil/global'
 
@@ -18,7 +17,11 @@ const Header = () => {
           <li>hoge</li>
           <li>fuga</li>
           {isSignIn ? (
-            <li onClick={handleClickSignOut} className="hover:cursor-pointer">
+            <li
+              onClick={handleClickSignOut}
+              className="hover:cursor-pointer"
+              data-testid="li-signout"
+            >
               SignOut
             </li>
           ) : null}

@@ -7,14 +7,14 @@ import { setupServer } from 'msw/node'
 import { handlers } from '../mock'
 
 const server = setupServer(...handlers)
-const signin = userEvent.setup()
+const app = userEvent.setup()
 beforeAll(() => {
   server.listen()
 })
 
 afterEach(() => {
   server.resetHandlers()
-  signin.clear
+  app.clear
 })
 
 afterAll(() => {
@@ -24,11 +24,15 @@ afterAll(() => {
 describe('App', () => {
   it('test', async () => {
     render(<App />)
-    expect(screen.getByText('Header')).toBeInTheDocument()
-    await signin.type(screen.getByTestId('input-email'), 'hanako@example.com')
-    await signin.type(screen.getByTestId('input-password'), 'password')
-    await signin.click(screen.getByTestId('input-submit'))
+    expect(screen.getByText('SignIn')).toBeInTheDocument()
+    await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
+    await app.type(screen.getByTestId('input-password'), 'password')
+    await app.click(screen.getByTestId('input-submit'))
 
     expect(await screen.findByText('Main')).toBeInTheDocument()
+
+    await app.click(screen.getByTestId('li-signout'))
+
+    expect(await screen.findByText('SignIn')).toBeInTheDocument()
   })
 })
