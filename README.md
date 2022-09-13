@@ -2,7 +2,7 @@
 
 vite + TypeScript + React
 
-react-router-dom + Recoil + react-hook-form + zod
+react-router-dom + Recoil + react-hook-form + zod + TanStack Query
 
 Jest + testing-library
 
@@ -145,3 +145,7 @@ npm install --save cross-fetch
 ```
 npm install --save-dev msw
 ```
+
+### TanStack Query
+
+[Installation](https://tanstack.com/query/v4/docs/installation)
