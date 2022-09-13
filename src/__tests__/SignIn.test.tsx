@@ -2,18 +2,31 @@ import { render, screen, waitFor } from '@testing-library/react'
 import SignIn from '../components/SignIn'
 import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
 import 'cross-fetch/polyfill'
 
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+      suspense: true,
+    },
+  },
+})
+
 describe('SignIn', () => {
   it('test', async () => {
     render(
-      <BrowserRouter>
-        <RecoilRoot>
-          <SignIn />
-        </RecoilRoot>
-      </BrowserRouter>
+      <QueryClientProvider client={client}>
+        <BrowserRouter>
+          <RecoilRoot>
+            <SignIn />
+          </RecoilRoot>
+        </BrowserRouter>
+      </QueryClientProvider>
     )
     expect(screen.getByText('SignIn')).toBeInTheDocument()
 
