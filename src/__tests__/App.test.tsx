@@ -27,10 +27,13 @@ describe('App', () => {
     expect(screen.getByText('SignIn')).toBeInTheDocument()
     await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
     await app.type(screen.getByTestId('input-password'), 'password')
+    // MEMO: SignIn成功
     await app.click(screen.getByTestId('input-submit'))
 
     expect(await screen.findByText('Main')).toBeInTheDocument()
+    expect(screen.getByText('SignOut')).toBeInTheDocument()
 
+    // MEMO: SignOut成功
     await app.click(screen.getByTestId('li-signout'))
 
     expect(await screen.findByText('SignIn')).toBeInTheDocument()
