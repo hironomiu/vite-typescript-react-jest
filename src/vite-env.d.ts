@@ -1,8 +1,9 @@
 /// <reference types="vite/client" />
-interface ImportMetaEnv {
-  readonly VITE_API_URL: string
-}
+// TODO: .envを利用する際はコメントを外す
+// interface ImportMetaEnv {
+//   readonly VITE_API_URL: string
+// }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
-}
+// interface ImportMeta {
+//   readonly env: ImportMetaEnv
+// }
