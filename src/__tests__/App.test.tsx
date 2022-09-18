@@ -27,6 +27,7 @@ describe('App', () => {
     expect(screen.getByText('SignIn')).toBeInTheDocument()
     await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
     await app.type(screen.getByTestId('input-password'), 'password')
+
     // MEMO: SignIn成功
     await app.click(screen.getByTestId('input-submit'))
 
