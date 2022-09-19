@@ -22,7 +22,7 @@ afterAll(() => {
 })
 
 describe('App', () => {
-  it('test', async () => {
+  it('test normal', async () => {
     render(<App />)
     expect(screen.getByText('SignIn')).toBeInTheDocument()
     await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
@@ -38,5 +38,24 @@ describe('App', () => {
     await app.click(screen.getByTestId('li-signout'))
 
     expect(await screen.findByText('SignIn')).toBeInTheDocument()
+  })
+
+  it('test error', async () => {
+    render(<App />)
+    expect(screen.getByText('SignIn')).toBeInTheDocument()
+    await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
+    await app.type(screen.getByTestId('input-password'), 'badpassword')
+
+    // MEMO: SignIns失敗
+    await app.click(screen.getByTestId('input-submit'))
+
+    // TODO: alertを出力してるのでそれを捕捉する
+    expect(await screen.findByText('SignIn')).toBeInTheDocument()
+    // expect(screen.getByText('SignOut')).toBeInTheDocument()
+
+    // MEMO: SignOut成功
+    // await app.click(screen.getByTestId('li-signout'))
+
+    // expect(await screen.findByText('SignIn')).toBeInTheDocument()
   })
 })

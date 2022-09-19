@@ -37,9 +37,13 @@ const SignIn = () => {
           const response = signInMutation.mutate(user, {
             onSuccess: async (res: { isSuccess: boolean; message: string }) => {
               console.log(res)
+              if (res.isSuccess) {
+                setIsSignIn(true)
+              } else {
+                alert('not signed')
+              }
             },
           })
-          setIsSignIn(true)
         })}
       >
         <div className="flex items-center">
