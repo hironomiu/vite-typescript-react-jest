@@ -41,6 +41,7 @@ describe('App', () => {
   })
 
   it('test error', async () => {
+    window.alert = jest.fn()
     render(<App />)
     expect(screen.getByText('SignIn')).toBeInTheDocument()
     await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
@@ -49,8 +50,9 @@ describe('App', () => {
     // MEMO: SignIns失敗
     await app.click(screen.getByTestId('input-submit'))
 
-    // TODO: alertを出力してるのでそれを捕捉する
     expect(await screen.findByText('SignIn')).toBeInTheDocument()
+    // MEMO: alertを出力してるのでそれを捕捉しメッセージを突き合わせ
+    expect(window.alert).toHaveBeenCalledWith('not signed')
     // expect(screen.getByText('SignOut')).toBeInTheDocument()
 
     // MEMO: SignOut成功
