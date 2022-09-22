@@ -22,7 +22,7 @@ afterAll(() => {
 })
 
 describe('App', () => {
-  it('test normal', async () => {
+  it('SignInが成功し画面繊維', async () => {
     render(<App />)
     expect(screen.getByText('SignIn')).toBeInTheDocument()
     await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
@@ -40,7 +40,7 @@ describe('App', () => {
     expect(await screen.findByText('SignIn')).toBeInTheDocument()
   })
 
-  it('test error', async () => {
+  it('SignInが失敗しアラート表示', async () => {
     window.alert = jest.fn()
     render(<App />)
     expect(screen.getByText('SignIn')).toBeInTheDocument()
@@ -53,11 +53,5 @@ describe('App', () => {
     expect(await screen.findByText('SignIn')).toBeInTheDocument()
     // MEMO: alertを出力してるのでそれを捕捉しメッセージを突き合わせ
     expect(window.alert).toHaveBeenCalledWith('not signed')
-    // expect(screen.getByText('SignOut')).toBeInTheDocument()
-
-    // MEMO: SignOut成功
-    // await app.click(screen.getByTestId('li-signout'))
-
-    // expect(await screen.findByText('SignIn')).toBeInTheDocument()
   })
 })
