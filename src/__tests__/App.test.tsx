@@ -22,7 +22,7 @@ afterAll(() => {
 })
 
 describe('App', () => {
-  it('SignInが成功し画面繊維', async () => {
+  it('SignInが成功し画面遷移', async () => {
     render(<App />)
     expect(screen.getByText('SignIn')).toBeInTheDocument()
     await app.type(screen.getByTestId('input-email'), 'hanako@example.com')
