@@ -149,3 +149,12 @@ npm install --save-dev msw
 ### TanStack Query
 
 [Installation](https://tanstack.com/query/v4/docs/installation)
+
+### CodeMirror
+
+[GitHub](https://github.com/uiwjs/react-codemirror)
+
+```
+npm install @uiw/react-codemirror
+npm install @codemirror/lang-sql
+```
