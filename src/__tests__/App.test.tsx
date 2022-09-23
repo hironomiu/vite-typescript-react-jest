@@ -31,7 +31,7 @@ describe('App', () => {
     // MEMO: SignIn成功
     await app.click(screen.getByTestId('input-submit'))
 
-    expect(await screen.findByText('Main')).toBeInTheDocument()
+    expect(await screen.findByText('Submit')).toBeInTheDocument()
     expect(screen.getByText('SignOut')).toBeInTheDocument()
 
     // MEMO: SignOut成功

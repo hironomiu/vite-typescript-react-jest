@@ -4,10 +4,13 @@ import { useRecoilValue } from 'recoil'
 import { isSignInAtom } from '../recoil/global'
 import CodeMirror from '@uiw/react-codemirror'
 import { sql } from '@codemirror/lang-sql'
-
+import { fetchSQLPost } from '../queries'
+import { useMutation } from '@tanstack/react-query'
 const Main = () => {
   const navigate = useNavigate()
   const isSignIn = useRecoilValue(isSignInAtom)
+
+  const sqlPostMutation = useMutation((sql: string) => fetchSQLPost(sql))
 
   useEffect(() => {
     if (!isSignIn) navigate('/signin')
@@ -21,18 +24,19 @@ const Main = () => {
   }, [])
 
   const handleClick = async () => {
-    const response = await fetch('http://127.0.0.1:4141/api/v1/hello', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    sqlPostMutation.mutate(value, {
+      onSuccess: (json: any) => {
+        if (json.isSuccess) {
+          setTableHeader(json.header)
+          setData(json.rows)
+        } else {
+          console.log(json)
+        }
       },
-      credentials: 'include',
-      mode: 'cors',
-      body: JSON.stringify({ sql: value }),
+      onError: (json: any) => {
+        console.log(json)
+      },
     })
-    const json = await response.json()
-    setTableHeader(json.header)
-    setData(json.rows)
   }
 
   return (

@@ -16,3 +16,16 @@ export const fetchSignInPost = async (user: User) => {
   })
   return await response.json()
 }
+
+export const fetchSQLPost = async (sql: string) => {
+  const response = await fetch('http://127.0.0.1:4141/api/v1/hello', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    mode: 'cors',
+    body: JSON.stringify({ sql: sql }),
+  })
+  return await response.json()
+}
