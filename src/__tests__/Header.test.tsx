@@ -11,7 +11,7 @@ describe('Header', () => {
       </RecoilRoot>
     )
 
-    expect(screen.getByText('Header')).toBeInTheDocument()
+    expect(screen.getByText('SQL Training')).toBeInTheDocument()
     expect(screen.queryByText('SignOut')).toBeNull()
   })
 })

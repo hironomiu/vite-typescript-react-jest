@@ -158,3 +158,9 @@ npm install --save-dev msw
 npm install @uiw/react-codemirror
 npm install @codemirror/lang-sql
 ```
+
+### React Icons
+
+```
+npm install react-icons
+```

@@ -34,6 +34,6 @@ describe('Main', () => {
       </QueryClientProvider>
     )
 
-    expect(await screen.findByText('Submit')).toBeInTheDocument()
+    expect(await screen.findByTestId('submit-icon')).toBeInTheDocument()
   })
 })

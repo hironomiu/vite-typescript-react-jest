@@ -15,7 +15,7 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Suspense fallback={<div>loading...</div>}>
+      <Suspense fallback={<div className=" items-center">loading...</div>}>
         <Outlet />
       </Suspense>
     </>

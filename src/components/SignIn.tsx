@@ -27,13 +27,11 @@ const SignIn = () => {
   }, [isSignIn, navigate])
 
   return (
-    <main className="flex justify-center pt-20">
+    <main className="flex flex-col items-center justify-center pt-20">
       <form
         action=""
-        className="px-4"
+        className="px-4 flex items-center justify-center flex-col"
         onSubmit={handleSubmit(async (user: User) => {
-          // const ret = await fetchSignInPost(user)
-          console.log(user)
           const response = signInMutation.mutate(user, {
             onSuccess: async (res: { isSuccess: boolean; message: string }) => {
               console.log(res)
@@ -54,11 +52,9 @@ const SignIn = () => {
             {...register('email')}
             data-testid="input-email"
           />
-          <div className="w-80">
-            {errors && (
-              <p data-testid="p-error-email">{errors.email?.message}</p>
-            )}
-          </div>
+        </div>
+        <div className="h-4">
+          {errors && <p data-testid="p-error-email">{errors.email?.message}</p>}
         </div>
         <div className="pt-2 flex items-center">
           <input
@@ -68,18 +64,17 @@ const SignIn = () => {
             {...register('password')}
             data-testid="input-password"
           />
-          <div className="w-80">
-            {errors && (
-              <p data-testid="p-error-password">{errors.password?.message}</p>
-            )}
-          </div>
+        </div>
+        <div className="h-4">
+          {errors && (
+            <p data-testid="p-error-password">{errors.password?.message}</p>
+          )}
         </div>
         <input
           type="submit"
-          className="mt-2 text-2xl bg-blue-500 p-2 rounded disabled:bg-gray-300 w-36 disabled:cursor-default cursor-pointer"
+          className="mt-2 text-2xl bg-blue-500 p-2 rounded disabled:bg-gray-300 w-64 disabled:cursor-default cursor-pointer"
           value="SignIn"
           disabled={!isValid}
-          // disabled
           data-testid="input-submit"
         />
       </form>
