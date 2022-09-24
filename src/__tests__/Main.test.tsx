@@ -4,6 +4,14 @@ import { RecoilRoot } from 'recoil'
 import Main from '../components/Main'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import '@testing-library/jest-dom/extend-expect'
+import 'cross-fetch/polyfill'
+import { setupServer } from 'msw/node'
+import { handlers } from '../mock'
+
+const server = setupServer(...handlers)
+beforeAll(() => {
+  server.listen()
+})
 
 const client = new QueryClient({
   defaultOptions: {
@@ -15,7 +23,7 @@ const client = new QueryClient({
   },
 })
 describe('Main', () => {
-  it('test', () => {
+  it('test', async () => {
     render(
       <QueryClientProvider client={client}>
         <BrowserRouter>
@@ -26,6 +34,6 @@ describe('Main', () => {
       </QueryClientProvider>
     )
 
-    expect(screen.getByText('Submit')).toBeInTheDocument()
+    expect(await screen.findByText('Submit')).toBeInTheDocument()
   })
 })

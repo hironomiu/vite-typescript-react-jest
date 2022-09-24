@@ -1,34 +1,39 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import { isSignInAtom } from '../recoil/global'
 import CodeMirror from '@uiw/react-codemirror'
 import { sql } from '@codemirror/lang-sql'
-import { fetchSQLPost } from '../queries'
-import { useMutation } from '@tanstack/react-query'
+import { fetchSQLPost, fetchHelloGet } from '../queries'
+import { useMutation, useQuery } from '@tanstack/react-query'
+
+const useQueryHello = () =>
+  useQuery({ queryKey: ['hello'], queryFn: fetchHelloGet, cacheTime: 0 })
+
 const Main = () => {
   const navigate = useNavigate()
   const isSignIn = useRecoilValue(isSignInAtom)
 
   const sqlPostMutation = useMutation((sql: string) => fetchSQLPost(sql))
 
-  useEffect(() => {
-    if (!isSignIn) navigate('/signin')
-  }, [isSignIn, navigate])
+  const { data, refetch } = useQueryHello()
+
+  console.log(data)
 
   const [value, setValue] = useState('')
   const [tableHeader, setTableHeader] = useState<string[]>([])
-  const [data, setData] = useState<string[]>([])
+  const [rows, setRows] = useState<string[]>([])
   const onChange = useCallback((value: any, viewUpdate: any) => {
     setValue(value)
   }, [])
 
-  const handleClick = async () => {
+  const handleClick = async (e: any) => {
+    e.preventDefault()
     sqlPostMutation.mutate(value, {
       onSuccess: (json: any) => {
         if (json.isSuccess) {
           setTableHeader(json.header)
-          setData(json.rows)
+          setRows(json.rows)
         } else {
           console.log(json)
         }
@@ -42,6 +47,7 @@ const Main = () => {
   return (
     <div className="flex p-4">
       <div>
+        <button onClick={() => refetch()}>refetch</button>
         <button
           onClick={handleClick}
           className="bg-blue-400 py-2 px-4 rounded mb-4"
@@ -68,7 +74,7 @@ const Main = () => {
           </tr>
         </thead>
         <tbody className="border">
-          {data?.map((row: any, i) => (
+          {rows?.map((row: any, i) => (
             <tr key={i} className="border">
               {tableHeader.map((col, j) => (
                 <td key={'' + i + '-' + j} className="border">

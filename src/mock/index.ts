@@ -16,4 +16,10 @@ export const handlers = [
       )
     }
   ),
+  rest.get('http://127.0.0.1:4141/api/v1/hello', async (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({ isSuccess: true, message: 'mock get' })
+    )
+  }),
 ]
