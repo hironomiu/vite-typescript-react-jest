@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { isSignInAtom } from '../recoil/global'
 import { GoSignOut } from 'react-icons/go'
@@ -9,23 +10,27 @@ const Header = () => {
   }
 
   return (
-    <header className="flex items-center justify-between px-4 h-20 bg-blue-400">
+    <header className="flex items-center justify-between px-4 h-20 bg-blue-400 w-full">
       <div>
-        <h1 className="text-3xl text-white">SQL Training</h1>
+        <h1 className="text-3xl text-white">
+          <Link to="/">SQL Training</Link>
+        </h1>
       </div>
       <nav>
         <ul className="flex space-x-2">
           {isSignIn ? (
-            <li
-              onClick={handleClickSignOut}
-              className="hover:cursor-pointer"
-              data-testid="li-signout"
-            >
-              <GoSignOut
-                className="text-4xl text-white"
-                data-testid="signout-icon"
-              />
-            </li>
+            <>
+              <li
+                onClick={handleClickSignOut}
+                className="hover:cursor-pointer"
+                data-testid="li-signout"
+              >
+                <GoSignOut
+                  className="text-4xl text-white"
+                  data-testid="signout-icon"
+                />
+              </li>
+            </>
           ) : null}
         </ul>
       </nav>

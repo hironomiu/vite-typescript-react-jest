@@ -34,3 +34,8 @@ export const fetchHelloGet = async () => {
   const response = await fetch('http://127.0.0.1:4141/api/v1/hello')
   return await response.json()
 }
+
+export const fetchLessonsGet = async () => {
+  const response = await fetch('http://127.0.0.1:4141/api/v1/lessons')
+  return await response.json()
+}

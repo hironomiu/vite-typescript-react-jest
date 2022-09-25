@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import Header from '../components/Header'
 import '@testing-library/jest-dom/extend-expect'
@@ -6,9 +7,11 @@ import '@testing-library/jest-dom/extend-expect'
 describe('Header', () => {
   it('test', async () => {
     render(
-      <RecoilRoot>
-        <Header />
-      </RecoilRoot>
+      <BrowserRouter>
+        <RecoilRoot>
+          <Header />
+        </RecoilRoot>
+      </BrowserRouter>
     )
 
     expect(screen.getByText('SQL Training')).toBeInTheDocument()

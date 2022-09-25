@@ -16,10 +16,21 @@ export const handlers = [
       )
     }
   ),
-  rest.get('http://127.0.0.1:4141/api/v1/hello', async (req, res, ctx) => {
+  rest.get('http://127.0.0.1:4141/api/v1/lessons', async (req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json({ isSuccess: true, message: 'mock get' })
+      ctx.delay(500),
+      ctx.json([
+        {
+          id: 1,
+          questionMessage: '想定結果と同じ実行結果を取得しましょう',
+          ansTableHeader: ['id', 'nickname'],
+          ansRows: [
+            { id: 1, nickname: '太郎' },
+            { id: 2, nickname: '花子' },
+          ],
+        },
+      ])
     )
   }),
 ]

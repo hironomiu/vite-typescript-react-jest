@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
@@ -28,12 +29,15 @@ describe('Main', () => {
       <QueryClientProvider client={client}>
         <BrowserRouter>
           <RecoilRoot>
-            <Main />
+            <Suspense fallback={<div>loading...</div>}>
+              <Main />
+            </Suspense>
           </RecoilRoot>
         </BrowserRouter>
       </QueryClientProvider>
     )
 
-    expect(await screen.findByTestId('submit-icon')).toBeInTheDocument()
+    expect(await screen.findByText('loading...')).toBeInTheDocument()
+    expect(await screen.findByText(/Lesson Menu/)).toBeInTheDocument()
   })
 })

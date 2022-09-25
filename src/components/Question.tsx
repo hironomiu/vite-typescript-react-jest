@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Question = () => {
+const Question = (props: { id: number; questionMessage: string }) => {
   return (
     <div className="p-4 my-4 bg-gray-100">
-      <h1 className="text-3xl">Question</h1>
+      <h1 className="text-3xl">Question{props.id}</h1>
       <div className="pt-4">
-        <span className="text-2xl">想定結果と同じ実行結果を取得しましょう</span>
+        <span className="text-2xl">{props.questionMessage}</span>
       </div>
     </div>
   )
