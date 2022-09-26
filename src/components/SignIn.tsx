@@ -71,7 +71,7 @@ const SignIn = () => {
         </div>
         <input
           type="submit"
-          className="mt-2 text-2xl bg-blue-500 p-2 rounded disabled:bg-gray-300 w-64 disabled:cursor-default cursor-pointer"
+          className="mt-2 text-2xl bg-blue-500 text-white p-2 rounded disabled:bg-gray-300 w-64 disabled:cursor-default cursor-pointer"
           value="SignIn"
           disabled={!isValid}
           data-testid="input-submit"
