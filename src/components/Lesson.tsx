@@ -1,4 +1,10 @@
-import { useState, useCallback, useEffect } from 'react'
+import {
+  useState,
+  useCallback,
+  useEffect,
+  MouseEvent,
+  KeyboardEvent,
+} from 'react'
 import CodeMirror from '@uiw/react-codemirror'
 import { sql } from '@codemirror/lang-sql'
 import { fetchSQLPost } from '../queries'
@@ -18,7 +24,7 @@ const Lesson = () => {
   const navigate = useNavigate()
   const params = useParams()
   const isSignIn = useRecoilValue(isSignInAtom)
-  const lesson: LessonType | undefined = useRecoilValue(
+  const lesson = useRecoilValue<LessonType | undefined>(
     lessonsSelectorFamily(Number(params.id))
   )
 
@@ -49,7 +55,9 @@ const Lesson = () => {
     setResult(result1 && result2)
   }, [tableHeader, rows])
 
-  const handleClick = async (e: any) => {
+  const handleClick = async (
+    e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLDivElement>
+  ) => {
     e.preventDefault()
     sqlPostMutation.mutate(value, {
       onSuccess: (json: any) => {
