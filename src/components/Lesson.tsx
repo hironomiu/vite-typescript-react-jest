@@ -27,6 +27,7 @@ const Lesson = () => {
   const lesson = useRecoilValue<LessonType | undefined>(
     lessonsSelectorFamily(Number(params.id))
   )
+  const [message, setMessage] = useState('')
 
   const [tabState, setTabState] = useState(1)
   const [result, setResult] = useState(false)
@@ -65,8 +66,9 @@ const Lesson = () => {
         if (json.isSuccess) {
           setTableHeader(json.header)
           setRows(json.rows)
+          setMessage('')
         } else {
-          alert('失敗')
+          setMessage('SQL Error')
         }
       },
       onError: () => {
@@ -84,12 +86,12 @@ const Lesson = () => {
       <div className="flex justify-between items-center my-4 h-10">
         {tableHeader.length > 0 && rows.length > 0 ? (
           result ? (
-            <h1 className="text-3xl font-bold">正解</h1>
+            <h1 className="text-3xl font-bold text-blue-700">Success</h1>
           ) : (
-            <h1 className="text-3xl font-bold text-red-600">不正解</h1>
+            <h1 className="text-3xl font-bold text-red-600">Failure</h1>
           )
         ) : (
-          <h1></h1>
+          <h1 className="text-3xl font-bold text-red-600">{message}</h1>
         )}
         <button
           onClick={handleClick}

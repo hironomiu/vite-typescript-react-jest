@@ -53,7 +53,11 @@ const SignIn = () => {
           />
         </div>
         <div className="h-4">
-          {errors && <p data-testid="p-error-email">{errors.email?.message}</p>}
+          {errors && (
+            <p data-testid="p-error-email" className="text-pink-600 text-sm">
+              {errors.email?.message}
+            </p>
+          )}
         </div>
         <div className="pt-2 flex items-center">
           <input
@@ -66,7 +70,9 @@ const SignIn = () => {
         </div>
         <div className="h-4">
           {errors && (
-            <p data-testid="p-error-password">{errors.password?.message}</p>
+            <p data-testid="p-error-password" className="text-pink-600 text-sm">
+              {errors.password?.message}
+            </p>
           )}
         </div>
         <input

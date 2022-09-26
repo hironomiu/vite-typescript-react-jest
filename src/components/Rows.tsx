@@ -12,7 +12,10 @@ const Rows = (props: any) => {
         <thead className="border">
           <tr className="border">
             {props.tableHeader?.map((col: any, index: number) => (
-              <th key={index} className="border p-4 bg-blue-200 text-xl">
+              <th
+                key={index}
+                className="border p-4 bg-blue-200 text-xl font-normal"
+              >
                 {col}
               </th>
             ))}
