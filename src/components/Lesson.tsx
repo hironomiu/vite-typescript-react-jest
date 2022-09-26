@@ -38,7 +38,7 @@ const Lesson = () => {
     setValue(value)
   }, [])
 
-  const expect = (answer: any, input: any): boolean => {
+  const expect = <T, U>(answer: T, input: U): boolean => {
     if (JSON.stringify(answer) !== JSON.stringify(input)) {
       return false
     }
@@ -60,6 +60,7 @@ const Lesson = () => {
   ) => {
     e.preventDefault()
     sqlPostMutation.mutate(value, {
+      // TODO: 型
       onSuccess: (json: any) => {
         if (json.isSuccess) {
           setTableHeader(json.header)
@@ -68,7 +69,7 @@ const Lesson = () => {
           alert('失敗')
         }
       },
-      onError: (json: any) => {
+      onError: () => {
         alert('エラー')
       },
     })
