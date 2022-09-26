@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Rows = (props: any) => {
   if (props.tableHeader.length === 0) {
     return (

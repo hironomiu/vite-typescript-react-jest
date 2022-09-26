@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Question = (props: { id: number; questionMessage: string }) => {
   return (
     <div className="p-4 my-4 bg-gray-100">
