@@ -34,7 +34,6 @@ const SignIn = () => {
         onSubmit={handleSubmit(async (user: User) => {
           const response = signInMutation.mutate(user, {
             onSuccess: async (res: { isSuccess: boolean; message: string }) => {
-              console.log(res)
               if (res.isSuccess) {
                 setIsSignIn(true)
               } else {

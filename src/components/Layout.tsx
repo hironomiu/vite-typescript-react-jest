@@ -9,7 +9,7 @@ const Layout = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const isSignIn = useRecoilValue(isSignInAtom)
-  console.log(location)
+
   useEffect(() => {
     if (!isSignIn) navigate('/signin')
   }, [isSignIn, navigate])
