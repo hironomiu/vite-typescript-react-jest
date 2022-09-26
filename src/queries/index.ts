@@ -17,7 +17,7 @@ export const fetchSignInPost = async (user: User) => {
 }
 
 export const fetchSQLPost = async (sql: string) => {
-  const response = await fetch('http://127.0.0.1:4141/api/v1/hello', {
+  const response = await fetch(new URL('/api/v1/hello', VITE_API_URL), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,11 +30,11 @@ export const fetchSQLPost = async (sql: string) => {
 }
 
 export const fetchHelloGet = async () => {
-  const response = await fetch('http://127.0.0.1:4141/api/v1/hello')
+  const response = await fetch(new URL('/api/v1/hello', VITE_API_URL))
   return await response.json()
 }
 
 export const fetchLessonsGet = async () => {
-  const response = await fetch('http://127.0.0.1:4141/api/v1/lessons')
+  const response = await fetch(new URL('/api/v1/lessons', VITE_API_URL))
   return await response.json()
 }
