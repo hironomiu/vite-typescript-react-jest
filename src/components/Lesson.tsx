@@ -150,7 +150,10 @@ const Lesson = () => {
         </nav>
 
         {tabState === 1 ? (
-          <Rows tableHeader={lesson?.ansTableHeader} rows={lesson?.ansRows} />
+          <Rows
+            tableHeader={lesson?.ansTableHeader || []}
+            rows={lesson?.ansRows}
+          />
         ) : null}
         {tabState === 2 ? <Rows tableHeader={tableHeader} rows={rows} /> : null}
         {tabState === 3 ? (
