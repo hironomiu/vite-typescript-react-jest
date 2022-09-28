@@ -1,4 +1,9 @@
-const Rows = (props: any) => {
+// TODO: 型
+type Props = {
+  tableHeader: string[]
+  rows: any
+}
+const Rows = (props: Props) => {
   if (props.tableHeader.length === 0) {
     return (
       <div className="items-center justify-center">
@@ -11,7 +16,7 @@ const Rows = (props: any) => {
       <table className="sborder">
         <thead className="border">
           <tr className="border">
-            {props.tableHeader?.map((col: any, index: number) => (
+            {props.tableHeader?.map((col: string, index: number) => (
               <th
                 key={index}
                 className="border p-4 bg-blue-200 text-xl font-normal text-gray-600"
