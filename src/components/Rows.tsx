@@ -20,6 +20,7 @@ const Rows = (props: Props) => {
               <th
                 key={index}
                 className="border p-4 bg-blue-200 text-xl font-normal text-gray-600"
+                data-testid={'th-' + col}
               >
                 {col}
               </th>
@@ -33,6 +34,7 @@ const Rows = (props: Props) => {
                 <td
                   key={'' + i + '-' + j}
                   className="border p-2 text-xl text-gray-600"
+                  data-testid={'td-' + col + '-' + i + '-' + j}
                 >
                   {row[col]}
                 </td>
