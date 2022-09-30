@@ -20,6 +20,10 @@ describe('Rows', () => {
     expect(screen.getByTestId('td-nickname-0-1')).toBeInTheDocument()
     expect(screen.getByTestId('td-id-1-0')).toBeInTheDocument()
     expect(screen.getByTestId('td-nickname-1-1')).toBeInTheDocument()
-    // TODO: 上のdata-testidの中身のテスト
+    // MEMO: 上のdata-testidの中身のテスト
+    expect(screen.getByTestId('td-id-0-0').textContent).toBe('1')
+    expect(screen.getByTestId('td-nickname-0-1').textContent).toBe('太郎')
+    expect(screen.getByTestId('td-id-1-0').textContent).toBe('2')
+    expect(screen.getByTestId('td-nickname-1-1').textContent).toBe('花子')
   })
 })
