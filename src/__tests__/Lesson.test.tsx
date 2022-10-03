@@ -29,5 +29,6 @@ describe('Lesson', () => {
     // TODO: テスト書く(ただしパスパラメータが渡っていない(undefined)状態なので要確認)
     expect(screen.getByText('想定結果')).toBeInTheDocument()
     expect(screen.getByText('実行結果')).toBeInTheDocument()
+    expect(screen.getByText('回答例')).toBeInTheDocument()
   })
 })
