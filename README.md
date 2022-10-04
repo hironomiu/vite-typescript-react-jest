@@ -2,9 +2,9 @@
 
 vite + TypeScript + React
 
-react-router-dom + Recoil + react-hook-form + zod + TanStack Query
+react-router-dom + Recoil + react-hook-form + zod + TanStack Query + CodeMirror
 
-Jest + testing-library
+Jest + testing-library + MSW
 
 ## Run
 
