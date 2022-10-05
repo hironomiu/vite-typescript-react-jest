@@ -36,6 +36,13 @@ describe('App', () => {
     expect(await screen.findByText('Lesson Menu')).toBeInTheDocument()
     expect(screen.getByTestId('signout-icon')).toBeInTheDocument()
 
+    // MEMO: 画面遷移（Lesson1）
+    await app.click(screen.getByText('Lesson:1'))
+
+    expect(
+      await screen.findByText('想定結果と同じ実行結果を取得しましょう')
+    ).toBeInTheDocument()
+
     // MEMO: SignOut成功
     await app.click(screen.getByTestId('li-signout'))
 
