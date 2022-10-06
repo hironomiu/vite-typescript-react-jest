@@ -39,8 +39,11 @@ describe('App', () => {
     // MEMO: 画面遷移（Lesson1）
     await app.click(screen.getByText('Lesson:1'))
 
+    expect(await screen.findByText('Question1')).toBeInTheDocument()
     expect(
-      await screen.findByText('想定結果と同じ実行結果を取得しましょう')
+      await screen.findByText(
+        'mock test 想定結果と同じ実行結果を取得しましょう'
+      )
     ).toBeInTheDocument()
 
     // MEMO: SignOut成功
