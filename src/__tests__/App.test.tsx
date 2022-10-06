@@ -46,6 +46,10 @@ describe('App', () => {
       )
     ).toBeInTheDocument()
 
+    // MEMO: 実行結果のタブに遷移（SQLは実行していないのでNoneが返る
+    await app.click(screen.getByText('実行結果'))
+    expect(await screen.findByText('None')).toBeInTheDocument()
+
     // MEMO: SignOut成功
     await app.click(screen.getByTestId('li-signout'))
 
