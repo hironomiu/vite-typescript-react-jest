@@ -23,7 +23,16 @@ export const handlers = [
       ctx.json([
         {
           id: 1,
-          questionMessage: 'mock test 想定結果と同じ実行結果を取得しましょう',
+          questionMessage: 'mock test1 想定結果と同じ実行結果を取得しましょう',
+          ansTableHeader: ['id', 'nickname'],
+          ansRows: [
+            { id: 1, nickname: '太郎' },
+            { id: 2, nickname: '花子' },
+          ],
+        },
+        {
+          id: 2,
+          questionMessage: 'mock test2 想定結果と同じ実行結果を取得しましょう',
           ansTableHeader: ['id', 'nickname'],
           ansRows: [
             { id: 1, nickname: '太郎' },

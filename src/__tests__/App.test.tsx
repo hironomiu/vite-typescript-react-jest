@@ -42,7 +42,18 @@ describe('App', () => {
     expect(await screen.findByText('Question1')).toBeInTheDocument()
     expect(
       await screen.findByText(
-        'mock test 想定結果と同じ実行結果を取得しましょう'
+        'mock test1 想定結果と同じ実行結果を取得しましょう'
+      )
+    ).toBeInTheDocument()
+
+    // MEMO: 画面遷移（Lesson2）
+    await app.click(screen.getByText('SQL Training'))
+    await app.click(screen.getByText('Lesson:2'))
+
+    expect(await screen.findByText('Question2')).toBeInTheDocument()
+    expect(
+      await screen.findByText(
+        'mock test2 想定結果と同じ実行結果を取得しましょう'
       )
     ).toBeInTheDocument()
 
