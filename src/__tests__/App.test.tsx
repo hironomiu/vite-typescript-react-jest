@@ -46,6 +46,9 @@ describe('App', () => {
       )
     ).toBeInTheDocument()
 
+    await app.click(screen.getByText('実行結果'))
+    expect(screen.getByText('None')).toBeInTheDocument()
+
     // MEMO: 画面遷移（Lesson2）
     await app.click(screen.getByText('SQL Training'))
     await app.click(screen.getByText('Lesson:2'))
