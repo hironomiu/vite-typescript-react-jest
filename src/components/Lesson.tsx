@@ -134,6 +134,7 @@ const Lesson = () => {
                 : 'text-gray-600 py-2 px-6 block hover:text-blue-500 focus:outline-none'
             }
             onClick={() => setTabState(2)}
+            data-testid="execution-result-button"
           >
             実行結果
           </button>
@@ -143,6 +144,7 @@ const Lesson = () => {
                 ? 'py-2 px-6 block hover:text-blue-500 focus:outline-none text-blue-500 border-b-2 font-medium border-blue-500 text-xl'
                 : 'text-gray-600 py-2 px-6 block hover:text-blue-500 focus:outline-none'
             }
+            data-testid="example-answer-button"
             onClick={() => setTabState(3)}
           >
             回答例
@@ -159,6 +161,7 @@ const Lesson = () => {
         {tabState === 3 ? (
           <CodeMirror
             value="select id,nickname from users"
+            data-testid="codemirror"
             height="400px"
             width="100%"
             theme="dark"

@@ -46,8 +46,12 @@ describe('App', () => {
       )
     ).toBeInTheDocument()
 
-    await app.click(screen.getByText('実行結果'))
-    expect(screen.getByText('None')).toBeInTheDocument()
+    await app.click(screen.getByTestId('execution-result-button'))
+    expect(await screen.findByText('None')).toBeInTheDocument()
+
+    // TODO: TypeError: textRange(...).getClientRects is not a function
+    // await app.click(screen.getByTestId('example-answer-button'))
+    // expect(screen.getByTestId('codemirror')).toBeInTheDocument()
 
     // MEMO: 画面遷移（Lesson2）
     await app.click(screen.getByText('SQL Training'))
