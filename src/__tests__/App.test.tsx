@@ -68,6 +68,9 @@ describe('App', () => {
     await app.click(screen.getByText('実行結果'))
     expect(await screen.findByText('None')).toBeInTheDocument()
 
+    // MEMO: Home Clickで遷移
+    await app.click(screen.getByTestId('home-link'))
+    expect(await screen.getByText('Lesson Menu')).toBeInTheDocument()
     // MEMO: SignOut成功
     await app.click(screen.getByTestId('li-signout'))
 

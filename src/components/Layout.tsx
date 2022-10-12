@@ -27,7 +27,11 @@ const Layout = () => {
         <Outlet />
         {isSignIn && location.pathname.match('/lesson') ? (
           <div className="flex items-center justify-center mt-auto mb-8">
-            <Link to="/" className="border-b border-blue-500 text-blue-500">
+            <Link
+              to="/"
+              className="border-b border-blue-500 text-blue-500"
+              data-testid="home-link"
+            >
               Home
             </Link>
           </div>
