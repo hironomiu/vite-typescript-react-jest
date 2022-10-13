@@ -39,5 +39,7 @@ describe('Main', () => {
 
     expect(await screen.findByText('loading...')).toBeInTheDocument()
     expect(await screen.findByText(/Lesson Menu/)).toBeInTheDocument()
+    expect(screen.getByText('Lesson:1')).toBeInTheDocument()
+    expect(screen.getByText('Lesson:2')).toBeInTheDocument()
   })
 })
