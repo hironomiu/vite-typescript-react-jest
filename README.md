@@ -1,5 +1,7 @@
 # vite-typescript-react-jest
 
+SQL Training アプリ
+
 vite + TypeScript + React
 
 react-router-dom + Recoil + react-hook-form + zod + TanStack Query + CodeMirror
