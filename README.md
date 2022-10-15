@@ -4,7 +4,7 @@ SQL Training アプリ
 
 vite + TypeScript + React
 
-react-router-dom + Recoil + react-hook-form + zod + TanStack Query + CodeMirror
+Tailwind + react-router-dom + Recoil + react-hook-form + zod + TanStack Query + CodeMirror
 
 Jest + testing-library + MSW
 
