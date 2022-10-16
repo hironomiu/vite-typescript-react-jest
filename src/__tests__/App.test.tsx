@@ -75,6 +75,7 @@ describe('App', () => {
     await app.click(screen.getByTestId('li-signout'))
 
     expect(await screen.findByText('SignIn')).toBeInTheDocument()
+    expect(screen.getByTestId('input-submit')).toBeDisabled()
   })
 
   it('SignInが失敗しアラート表示', async () => {
