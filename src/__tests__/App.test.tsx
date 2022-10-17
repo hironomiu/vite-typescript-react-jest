@@ -76,6 +76,9 @@ describe('App', () => {
 
     expect(await screen.findByText('SignIn')).toBeInTheDocument()
     expect(screen.getByTestId('input-submit')).toBeDisabled()
+
+    // Email
+    expect(screen.getByTestId('input-email')).toHaveValue('')
   })
 
   it('SignInが失敗しアラート表示', async () => {
