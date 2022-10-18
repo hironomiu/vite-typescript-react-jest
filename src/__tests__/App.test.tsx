@@ -79,6 +79,7 @@ describe('App', () => {
 
     // Email
     expect(screen.getByTestId('input-email')).toHaveValue('')
+    expect(screen.getByTestId('p-error-email').textContent).toBe('')
   })
 
   it('SignInが失敗しアラート表示', async () => {
