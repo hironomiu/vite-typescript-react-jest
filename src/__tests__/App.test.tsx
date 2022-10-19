@@ -80,6 +80,10 @@ describe('App', () => {
     // Email
     expect(screen.getByTestId('input-email')).toHaveValue('')
     expect(screen.getByTestId('p-error-email').textContent).toBe('')
+    await userEvent.type(screen.getByTestId('input-email'), 'hoge')
+    expect(
+      await screen.findByText('Emailを入力してください。')
+    ).toBeInTheDocument()
   })
 
   it('SignInが失敗しアラート表示', async () => {
