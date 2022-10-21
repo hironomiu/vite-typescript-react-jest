@@ -89,6 +89,7 @@ describe('App', () => {
     )
 
     expect(screen.getByTestId('p-error-email')).toBeInTheDocument()
+    expect(await screen.findByTestId('input-email')).toHaveValue('hoge')
   })
 
   it('SignInが失敗しアラート表示', async () => {
