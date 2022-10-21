@@ -87,6 +87,8 @@ describe('App', () => {
     expect(screen.getByTestId('p-error-email').textContent).toBe(
       'Emailを入力してください。'
     )
+
+    expect(screen.getByTestId('p-error-email')).toBeInTheDocument()
   })
 
   it('SignInが失敗しアラート表示', async () => {
