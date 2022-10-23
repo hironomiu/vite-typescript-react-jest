@@ -90,6 +90,10 @@ describe('App', () => {
 
     expect(screen.getByTestId('p-error-email')).toBeInTheDocument()
     expect(await screen.findByTestId('input-email')).toHaveValue('hoge')
+    await userEvent.type(
+      screen.getByTestId('input-email'),
+      '{backspace}{backspace}{backspace}{backspace}'
+    )
   })
 
   it('SignInが失敗しアラート表示', async () => {
