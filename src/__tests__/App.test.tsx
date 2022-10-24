@@ -94,6 +94,10 @@ describe('App', () => {
       screen.getByTestId('input-email'),
       '{backspace}{backspace}{backspace}{backspace}'
     )
+    await userEvent.type(
+      screen.getByTestId('input-email'),
+      'hanako@example.com'
+    )
   })
 
   it('SignInが失敗しアラート表示', async () => {
