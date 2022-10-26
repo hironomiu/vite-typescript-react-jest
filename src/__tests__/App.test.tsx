@@ -102,6 +102,9 @@ describe('App', () => {
     expect(await screen.findByTestId('input-email')).toHaveValue(
       'hanako@example.com'
     )
+
+    // Password
+    expect(screen.getByTestId('input-password')).toHaveValue('')
   })
 
   it('SignInが失敗しアラート表示', async () => {
