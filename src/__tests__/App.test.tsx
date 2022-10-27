@@ -105,6 +105,10 @@ describe('App', () => {
 
     // Password
     expect(screen.getByTestId('input-password')).toHaveValue('')
+    await userEvent.type(
+      screen.getByTestId('input-password'),
+      'password{enter}'
+    )
   })
 
   it('SignInが失敗しアラート表示', async () => {
