@@ -25,7 +25,7 @@ const Main = () => {
           className="bg-blue-400 w-40 py-3 text-center rounded my-4 text-white"
           key={lesson.id}
         >
-          Lesson:{lesson.id}
+          {'Lesson:' + lesson.id}
         </Link>
       ))}
     </main>

@@ -40,7 +40,7 @@ describe('Main', () => {
     expect(await screen.findByText('loading...')).toBeInTheDocument()
     expect(await screen.findByText(/Lesson Menu/)).toBeInTheDocument()
     expect(screen.getByText('Lesson:1')).toBeInTheDocument()
-    // TODO: VSCodeで出る「TestingLibraryElementError: Unable to find an element with the text: Lesson:2.」
-    expect(screen.getByText('Lesson:2')).toBeInTheDocument()
+    expect(await screen.findByText('Lesson:2')).toBeInTheDocument()
+    screen.debug()
   })
 })
