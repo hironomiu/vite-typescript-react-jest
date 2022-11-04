@@ -41,5 +41,6 @@ describe('Main', () => {
     expect(await screen.findByText(/Lesson Menu/)).toBeInTheDocument()
     expect(screen.getByText('Lesson:1')).toBeInTheDocument()
     expect(await screen.findByText('Lesson:2')).toBeInTheDocument()
+    screen.debug()
   })
 })
